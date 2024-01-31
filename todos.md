@@ -6,7 +6,3 @@ mv analysis-directory/ {name_of_your_analysis}
 cd {name_of_your_analysis}
 rm -r -f .git
 ```
-
-# Purpose
-
-# Current data source

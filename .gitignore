@@ -77,8 +77,13 @@ target/
 
 # exclude data from source control by default
 #/data/
-#data/
-#results/
+!data/raw/README.md
+!data/processed/README.md
+!data/interim/README.md
+!data/external/README.md
+!results/figures/README.md
+!results/reports/README.md
+!results/other/README.md
 *.png
 *.pdf
 *.tsv
