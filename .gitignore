@@ -77,13 +77,6 @@ target/
 
 # exclude data from source control by default
 #/data/
-!data/raw/README.md
-!data/processed/README.md
-!data/interim/README.md
-!data/external/README.md
-!results/figures/README.md
-!results/reports/README.md
-!results/other/README.md
 *.png
 *.pdf
 *.tsv
@@ -94,6 +87,7 @@ target/
 *.gz
 *.ipynb
 *.mtx
+*.xlsx
 
 # Mac OS-specific storage files
 .DS_Store
