@@ -1,7 +1,7 @@
 # Analysis Description
-==============================
-
+------------
 A short description of the analysis.
+
 
 # Project Organization
 ------------
