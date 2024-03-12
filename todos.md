@@ -3,10 +3,7 @@
 ## Git clone
 git clone https://github.com/yigewu/analysis-directory.git
 ## Make directory accessible by RStudio Server
-chmod -R 777 analysis-directory/
+chmod -R 777 analysis-directory/ && rm -r -f analysis-directory/.git
 ## Rename directory
 mv analysis-directory/ {name_of_your_analysis}
-## Make sure the analysis directory is no longer a git repository
-cd {name_of_your_analysis}
-rm -r -f .git
 ```
