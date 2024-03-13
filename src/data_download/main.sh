@@ -1,6 +1,7 @@
 #For downloading from URL
 url=
-wget ${url} -P ../../data/raw
+outputFileName=
+wget -c ${url} -P ../../data/raw -O ${outputFileName}
 
 #For downloading from GEO
 geo_dir=
