@@ -6,7 +6,7 @@ outputDir="../../data/raw/"
 #For downloading from URL
 url=
 outputFileName=
-wget -c ${url} -P ${outputDir} -O ${outputFileName}
+wget -c0 - ${url} > ${outputDir}${outputFileName}
 
 #For downloading from GEO
 geo_dir=
