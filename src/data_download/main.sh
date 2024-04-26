@@ -9,12 +9,17 @@ outputFileName=
 wget -cO - ${url} > ${outputDir}${outputFileName}
 
 #For downloading from GEO
+## The FTP address can be found by clicking one of the files in the "Download family" section
 geo_dir=
 geo_accession=
 wget --recursive --no-parent -nd ftp://ftp.ncbi.nlm.nih.gov/geo/series/${geo_dir}/${geo_accession}/ -P ${outputDir}
 
-# If file is .zip file, unzip
 cd ${outputDir}
-if [ "${outputFileName: -4}" == ".txt" ]; then
+# If file is .zip file, unzip
+if [ "${outputFileName: -4}" == ".zip" ]; then
 	unzip ${outputFileName}
+fi
+# If file is .tar file
+if [ "${outputFileName: -4}" == ".tar" ]; then
+	tar -xvf ${outputFileName}
 fi
