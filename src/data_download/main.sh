@@ -14,17 +14,31 @@ geo_dir=
 geo_accession=
 wget --recursive --no-parent -nd ftp://ftp.ncbi.nlm.nih.gov/geo/series/${geo_dir}/${geo_accession}/ -P ${outputDir}
 
-cd ${outputDir}
-# If file is .zip file, unzip
-if [ "${outputFileName: -4}" == ".zip" ]; then
-	unzip ${outputFileName}
-fi
-# If file is .tar file
-if [ "${outputFileName: -4}" == ".tar" ]; then
-	mkdir -p ${outputFileName}.out
-	tar -xvf ${outputFileName} -C ${outputFileName}.out
-fi
-# If file is .gz file
-if [ "${outputFileName: -4}" == ".gz" ]; then
-	gunzip ${outputFileName}
-fi
+# Change to the output directory
+cd "${outputDir}"
+
+# Create the unzipped directory if it doesn't exist
+mkdir -p unzipped
+
+# Loop through all files in the current directory
+for file in *; do
+	# Check if it's a regular file
+	if [ -f "$file" ]; then
+		case "$file" in
+			*.zip)
+				# Unzip .zip files
+				unzip -q "$file" -d "unzipped/${file%.*}"
+				;;
+			*.tar)
+				# Extract .tar files
+				mkdir -p "unzipped/${file%.*}"
+				tar -xf "$file" -C "unzipped/${file%.*}"
+				;;
+			*.gz)
+				# Extract .gz files
+				mkdir -p "unzipped/${file%.*}"
+				gunzip -c "$file" > "unzipped/${file%.*}/${file%.gz}"
+				;;
+		esac
+	fi
+done
