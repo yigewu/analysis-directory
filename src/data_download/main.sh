@@ -21,5 +21,10 @@ if [ "${outputFileName: -4}" == ".zip" ]; then
 fi
 # If file is .tar file
 if [ "${outputFileName: -4}" == ".tar" ]; then
-	tar -xvf ${outputFileName}
+	mkdir -p ${outputFileName}.out
+	tar -xvf ${outputFileName} -C ${outputFileName}.out
+fi
+# If file is .gz file
+if [ "${outputFileName: -4}" == ".gz" ]; then
+	gunzip ${outputFileName}
 fi
