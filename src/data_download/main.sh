@@ -36,8 +36,7 @@ for file in *; do
 				;;
 			*.gz)
 				# Extract .gz files
-				mkdir -p "unzipped/${file%.*}"
-				gunzip -c "$file" > "unzipped/${file%.*}/${file%.gz}"
+				gunzip -c "$file" > "unzipped/${file%.*}"
 				;;
 		esac
 	fi
